@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mapd722_health_care/Pages/home_user_cards.dart';
 
 class HomeUserPage extends StatefulWidget {
   HomeUserPage({Key? key}) : super(key: key);
@@ -12,11 +13,8 @@ class _HomeUserPageState extends State<HomeUserPage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Hi User!',
-      style: optionStyle,
-    ),
+  static final List<Widget> _widgetOptions = <Widget>[
+    HomeUserCard(),
     Text(
       'My services',
       style: optionStyle,
@@ -40,8 +38,8 @@ class _HomeUserPageState extends State<HomeUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
-        centerTitle: false,
+        title: const Text('Your Health Care App'),
+        centerTitle: true,
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -58,11 +56,11 @@ class _HomeUserPageState extends State<HomeUserPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
-            label: 'records',
+            label: 'Records',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'profile',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,

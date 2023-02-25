@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mapd722_health_care/Pages/sign_in.dart';
-import 'package:mapd722_health_care/classes/language.dart';
+import 'package:mapd722_health_care/Classes/language.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Health Care App'),
+        title: const Text(''),
         centerTitle: false,
         actions: <Widget>[
           Padding(
