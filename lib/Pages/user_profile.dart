@@ -4,17 +4,14 @@ import 'package:mapd722_health_care/models/user.dart';
 import 'package:mapd722_health_care/classes/database.dart';
 import 'package:mongo_dart/mongo_dart.dart' as M;
 
-class SignIn extends StatefulWidget {
-  SignIn({Key? key}) : super(key: key);
+class UserProfile extends StatefulWidget {
+  UserProfile({Key? key}) : super(key: key);
 
   @override
-  _SignIn createState() => _SignIn();
+  _UserProfile createState() => _UserProfile();
 }
 
-class _SignIn extends State<SignIn> {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController pass1Controller = TextEditingController();
-  TextEditingController pass2Controller = TextEditingController();
+class _UserProfile extends State<UserProfile> {
   TextEditingController firstnameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
@@ -25,9 +22,6 @@ class _SignIn extends State<SignIn> {
   @override
   void dispose() {
     super.dispose();
-    usernameController.dispose();
-    pass1Controller.dispose();
-    pass2Controller.dispose();
     firstnameController.dispose();
     lastnameController.dispose();
     ageController.dispose();
@@ -39,9 +33,6 @@ class _SignIn extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign In'),
-      ),
       body: Container(
         padding: const EdgeInsets.all(20),
         child: _mainForm(context),
@@ -53,57 +44,6 @@ class _SignIn extends State<SignIn> {
     return Form(
       child: Column(
         children: <Widget>[
-          TextFormField(
-            controller: usernameController,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'User Name',
-              hintText: 'Enter user name',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: pass1Controller,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Password',
-              hintText: 'Enter password',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: pass2Controller,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Repeat Password',
-              hintText: 'Repeat password',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
           const SizedBox(
             height: 10,
           ),
@@ -212,16 +152,14 @@ class _SignIn extends State<SignIn> {
           MaterialButton(
             onPressed: () {
               //Create user and login
-              insertUser();
-              //Navigator.push(context,
-              //    MaterialPageRoute(builder: (context) => HomeUserPage()));
+              //updateUser();
             },
             height: 50,
             shape: const StadiumBorder(),
             color: Theme.of(context).primaryColor,
             child: const Center(
               child: Text(
-                'Create account',
+                'Update Profile',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
@@ -231,20 +169,9 @@ class _SignIn extends State<SignIn> {
     );
   }
 
-  insertUser() async {
-    final user = User(
-        M.ObjectId(),
-        usernameController.text,
-        pass1Controller.text,
-        firstnameController.text,
-        lastnameController.text,
-        addressController.text,
-        int.parse(sinController.text),
-        int.parse(ageController.text),
-        int.parse(phoneController.text));
-    await DataBase.insertUser(user);
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("User Created. Enter your user and password.")));
+  updateUser() async {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("User Updated")));
     Navigator.pop(context);
   }
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mapd722_health_care/Pages/home_user_cards.dart';
+import 'package:mapd722_health_care/Pages/home_user_records.dart';
+import 'package:mapd722_health_care/Pages/home_user_services.dart';
+import 'package:mapd722_health_care/pages/user_profile.dart';
+import 'package:mapd722_health_care/widgets/PatientRecordContainer.dart';
 
 class HomeUserPage extends StatefulWidget {
   HomeUserPage({Key? key}) : super(key: key);
@@ -15,18 +19,9 @@ class _HomeUserPageState extends State<HomeUserPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
     HomeUserCard(),
-    Text(
-      'My services',
-      style: optionStyle,
-    ),
-    Text(
-      'My records',
-      style: optionStyle,
-    ),
-    Text(
-      'My profile',
-      style: optionStyle,
-    ),
+    HomeUserServices(),
+    HomeUserRecords(),
+    UserProfile(),
   ];
   void _onItemTapped(int index) {
     setState(() {

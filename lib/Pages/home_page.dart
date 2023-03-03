@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mapd722_health_care/Pages/sign_in.dart';
-import 'package:mapd722_health_care/Classes/language.dart';
+import 'package:mapd722_health_care/pages/log_in.dart';
+import 'package:mapd722_health_care/classes/language.dart';
+import 'package:mapd722_health_care/classes/database.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   void _changeLanguage(Language language) {
     print(language.languageCode);
+    DataBase.connect("users");
   }
 
   @override
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               onPressed: () => {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignIn()))
+                        MaterialPageRoute(builder: (context) => LogIn()))
                   },
               icon: const Icon(Icons.account_circle))
         ],
