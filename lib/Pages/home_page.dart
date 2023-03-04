@@ -15,7 +15,6 @@ class _HomePageState extends State<HomePage> {
 
   void _changeLanguage(Language language) {
     print(language.languageCode);
-    DataBase.connect("users");
   }
 
   @override
@@ -67,16 +66,101 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: <Widget>[
           SizedBox(
-            height: MediaQuery.of(context).size.height / 4,
-            child: const Center(
+            height: 200,
+            width: 550,
+            child: Image.asset(
+              'assets/images/healthcare.png',
+              height: 300,
+              width: 500,
+            ),
+          ),
+          const SizedBox(
+            height: 40,
+            width: 500,
+            child: Center(
               child: Text(
-                'Home Page information',
-                textAlign: TextAlign.center,
+                'Welcome to your healthcare App',
                 style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
               ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const SizedBox(
+            height: 30,
+            width: 500,
+            child: Center(
+              child: Text(
+                'In this App you will find',
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Card(
+            color: Colors.blue,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  leading: Image.asset(
+                    'assets/images/appointment.png',
+                    height: 50,
+                    width: 50,
+                  ),
+                  title: const Text('Services Appointments'),
+                  subtitle: const Text('Manage service appointments.'),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Card(
+            color: Colors.blue,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  leading: Image.asset(
+                    'assets/images/History.png',
+                    height: 50,
+                    width: 50,
+                  ),
+                  title: const Text('Patient Records'),
+                  subtitle: const Text('Manage patient records.'),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Card(
+            color: Colors.blue,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  leading: Image.asset(
+                    'assets/images/patient.png',
+                    height: 50,
+                    width: 50,
+                  ),
+                  title: const Text('Patient Management'),
+                  subtitle: const Text('Manage patient profiles.'),
+                ),
+              ],
             ),
           ),
         ],

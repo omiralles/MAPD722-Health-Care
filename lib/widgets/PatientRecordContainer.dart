@@ -28,7 +28,6 @@ class _PatientRecordContainer extends State<PatientRecordContainer> {
                   print("A Patient record was pressed");
                 },
                 child: PatientRecordWidget(widget.listOfRecords[index]),
-                //const Text("PAtient record")
               );
             }));
   }

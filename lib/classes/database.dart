@@ -47,6 +47,9 @@ class DataBase {
 
     var u = await userCollection.findOne({"_id": user.id});
     u["firstname"] = user.firstname;
+    u["lastname"] = user.lastname;
+    u["address"] = user.address;
+    u["sin"] = user.sin;
     u["age"] = user.age;
     u["phone"] = user.phone;
     await userCollection.save(u);

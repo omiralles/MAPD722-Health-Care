@@ -12,6 +12,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignIn extends State<SignIn> {
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+
   TextEditingController usernameController = TextEditingController();
   TextEditingController pass1Controller = TextEditingController();
   TextEditingController pass2Controller = TextEditingController();
@@ -51,182 +53,191 @@ class _SignIn extends State<SignIn> {
 
   Form _mainForm(BuildContext context) {
     return Form(
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            controller: usernameController,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'User Name',
-              hintText: 'Enter user name',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: pass1Controller,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Password',
-              hintText: 'Enter password',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: pass2Controller,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Repeat Password',
-              hintText: 'Repeat password',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: firstnameController,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'First name',
-              hintText: 'Enter First Name',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: lastnameController,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Last name',
-              hintText: 'Enter Last Name',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: ageController,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Age',
-              hintText: 'Enter Age',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: addressController,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Address',
-              hintText: 'Enter Address',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: phoneController,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Phone number',
-              hintText: 'Enter Phone Number',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-            controller: sinController,
-            validator: (val) {
-              if (val!.isEmpty) {
-                return 'required field';
-              }
-              return null;
-            },
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'SIN number',
-              hintText: 'Enter SIN Number',
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          MaterialButton(
-            onPressed: () {
-              //Create user and login
-              insertUser();
-              //Navigator.push(context,
-              //    MaterialPageRoute(builder: (context) => HomeUserPage()));
-            },
-            height: 50,
-            shape: const StadiumBorder(),
-            color: Theme.of(context).primaryColor,
-            child: const Center(
-              child: Text(
-                'Create account',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+      key: _key,
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            TextFormField(
+              controller: usernameController,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'User Name',
+                hintText: 'Enter user name',
               ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: pass1Controller,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Password',
+                hintText: 'Enter password',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: pass2Controller,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Repeat Password',
+                hintText: 'Repeat password',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: firstnameController,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'First name',
+                hintText: 'Enter First Name',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: lastnameController,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Last name',
+                hintText: 'Enter Last Name',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: ageController,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Age',
+                hintText: 'Enter Age',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: addressController,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Address',
+                hintText: 'Enter Address',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: phoneController,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Phone number',
+                hintText: 'Enter Phone Number',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              controller: sinController,
+              validator: (val) {
+                if (val == null || val.isEmpty) {
+                  return 'required field';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'SIN number',
+                hintText: 'Enter SIN Number',
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              onPressed: () {
+                //Create user and login
+                if (_key.currentState!.validate()) {
+                  insertUser();
+                }
+              },
+              height: 50,
+              shape: const StadiumBorder(),
+              color: Theme.of(context).primaryColor,
+              child: const Center(
+                child: Text(
+                  'Create account',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -12,16 +12,21 @@ class _HomeUserCardState extends State<HomeUserCard> {
       body: ListView(
         children: [
           const SizedBox(
-            height: 100,
+            height: 50,
           ),
           Card(
+            color: Colors.grey[200],
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.room_service),
-                  title: Text('My Services'),
-                  subtitle: Text('Create/Modify your services.'),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/images/appointment.png',
+                    height: 50,
+                    width: 50,
+                  ),
+                  title: const Text('My Services'),
+                  subtitle: const Text('Create/Modify your services.'),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -40,13 +45,18 @@ class _HomeUserCardState extends State<HomeUserCard> {
             height: 10,
           ),
           Card(
+            color: Colors.grey[200],
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.history),
-                  title: Text('My Recods'),
-                  subtitle: Text('Create/Modify your records.'),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/images/History.png',
+                    height: 50,
+                    width: 50,
+                  ),
+                  title: const Text('My Recods'),
+                  subtitle: const Text('Create/Modify your records.'),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -65,13 +75,48 @@ class _HomeUserCardState extends State<HomeUserCard> {
             height: 10,
           ),
           Card(
+            color: Colors.grey[200],
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text('My Profile'),
-                  subtitle: Text('Modify your profile.'),
+                ListTile(
+                  leading: Image.asset(
+                    'assets/images/patient.png',
+                    height: 50,
+                    width: 50,
+                  ),
+                  title: const Text('My patients'),
+                  subtitle: const Text('Create/Modify your patients.'),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    TextButton(
+                      child: const Text('VIEW PATIENTS'),
+                      onPressed: () {/* ... */},
+                    ),
+                    const SizedBox(width: 8),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Card(
+            color: Colors.grey[200],
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  leading: Image.asset(
+                    'assets/images/person.png',
+                    height: 50,
+                    width: 50,
+                  ),
+                  title: const Text('My Profile'),
+                  subtitle: const Text('Modify your profile.'),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

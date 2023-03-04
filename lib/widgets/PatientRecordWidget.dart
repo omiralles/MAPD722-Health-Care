@@ -41,7 +41,17 @@ class PatientRecordWidget extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Text(
+              " ${record.patient}",
+              style: TextStyle(
+                  fontSize: 13,
+                  color: record.textColor,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Padding(
+              padding: const EdgeInsets.only(top: 10.0),
               child: Text(
                 "Date: ${record.recordDate}",
                 style: TextStyle(

@@ -9,12 +9,14 @@ class Record {
   final String unit;
   final double value;
   final String recordDate;
+  final String patient;
 
   late Color backgroundColor;
   late Color contrastColor;
   late Color textColor;
 
-  Record(this.id, this.name, this.unit, this.value, this.recordDate) {
+  Record(this.id, this.name, this.unit, this.value, this.recordDate,
+      this.patient) {
     generateColors();
   }
 

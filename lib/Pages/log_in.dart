@@ -13,9 +13,17 @@ class LogIn extends StatefulWidget {
 
 class _LogIn extends State<LogIn> {
   static const String USER_COLLECTION = "users";
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
   TextEditingController usernameController = TextEditingController();
   TextEditingController passController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    usernameController.dispose();
+    passController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +40,17 @@ class _LogIn extends State<LogIn> {
 
   Form _mainForm(BuildContext context) {
     return Form(
+      key: _key,
       child: Column(
         children: <Widget>[
           SizedBox(
             height: MediaQuery.of(context).size.height / 4,
             child: const Center(
               child: Text(
-                'Log In Page',
+                'LOG IN',
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  color: Colors.blue,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
@@ -50,7 +60,7 @@ class _LogIn extends State<LogIn> {
           TextFormField(
             controller: usernameController,
             validator: (val) {
-              if (val!.isEmpty) {
+              if (val == null || val.isEmpty) {
                 return 'required field';
               }
               return null;
@@ -66,8 +76,11 @@ class _LogIn extends State<LogIn> {
           ),
           TextFormField(
             controller: passController,
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
             validator: (val) {
-              if (val!.isEmpty) {
+              if (val == null || val.isEmpty) {
                 return 'required field';
               }
               return null;
@@ -94,15 +107,16 @@ class _LogIn extends State<LogIn> {
           ),
           MaterialButton(
             onPressed: () async {
-              //DataBase.connect(Constants.USER_COLLECTION);
-              if (!await DataBase.getLogin(
-                  usernameController.text, passController.text)) {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content:
-                        Text("LOGIN FAIL. Wrong user or password. Try again")));
-              } else {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeUserPage()));
+              if (_key.currentState!.validate()) {
+                if (!await DataBase.getLogin(
+                    usernameController.text, passController.text)) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(
+                          "LOGIN FAIL. Wrong user or password. Try again")));
+                } else {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeUserPage()));
+                }
               }
             },
             height: 50,

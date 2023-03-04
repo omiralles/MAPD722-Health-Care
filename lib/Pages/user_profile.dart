@@ -12,6 +12,8 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfile extends State<UserProfile> {
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+
   TextEditingController firstnameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
   TextEditingController ageController = TextEditingController();
@@ -42,6 +44,7 @@ class _UserProfile extends State<UserProfile> {
 
   Form _mainForm(BuildContext context) {
     return Form(
+      key: _key,
       child: Column(
         children: <Widget>[
           const SizedBox(
@@ -67,7 +70,7 @@ class _UserProfile extends State<UserProfile> {
           TextFormField(
             controller: lastnameController,
             validator: (val) {
-              if (val!.isEmpty) {
+              if (val == null || val.isEmpty) {
                 return 'required field';
               }
               return null;
@@ -84,7 +87,7 @@ class _UserProfile extends State<UserProfile> {
           TextFormField(
             controller: ageController,
             validator: (val) {
-              if (val!.isEmpty) {
+              if (val == null || val.isEmpty) {
                 return 'required field';
               }
               return null;
@@ -101,7 +104,7 @@ class _UserProfile extends State<UserProfile> {
           TextFormField(
             controller: addressController,
             validator: (val) {
-              if (val!.isEmpty) {
+              if (val == null || val.isEmpty) {
                 return 'required field';
               }
               return null;
@@ -118,7 +121,7 @@ class _UserProfile extends State<UserProfile> {
           TextFormField(
             controller: phoneController,
             validator: (val) {
-              if (val!.isEmpty) {
+              if (val == null || val.isEmpty) {
                 return 'required field';
               }
               return null;
@@ -135,7 +138,7 @@ class _UserProfile extends State<UserProfile> {
           TextFormField(
             controller: sinController,
             validator: (val) {
-              if (val!.isEmpty) {
+              if (val == null || val.isEmpty) {
                 return 'required field';
               }
               return null;
@@ -151,8 +154,10 @@ class _UserProfile extends State<UserProfile> {
           ),
           MaterialButton(
             onPressed: () {
-              //Create user and login
-              //updateUser();
+              //Update user data
+              if (_key.currentState!.validate()) {
+                //updateUser();
+              }
             },
             height: 50,
             shape: const StadiumBorder(),
